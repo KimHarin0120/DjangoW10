@@ -28,7 +28,8 @@ def posting_create(request):
         if posting_form.is_valid():
             # [코드 작성] posting_form을 임시저장
             # [코드 작성] posting_form의 author에 작성자 객체 추가
-
+            posting_form = posting_form.save(commit=false)
+            posting_form.author = request.user
             posting_form.save()
             return redirect('page:posting_list')
     else:
